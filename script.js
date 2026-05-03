@@ -2111,3 +2111,30 @@ window.addEventListener("keydown", (e) => {
 document.addEventListener("visibilitychange", () => {
   if (!document.hidden) ensureAudioReady();
 });
+
+/* iOS: 意図しないスクロール・ダブルタップズーム軽減（game-standard-requirements） */
+document.addEventListener(
+  "touchmove",
+  (e) => {
+    const el = e.target;
+    if (el && typeof el.closest === "function") {
+      if (el.closest("#choices, #branchMapPanel, #branchMapText")) {
+        return;
+      }
+    }
+    e.preventDefault();
+  },
+  { passive: false }
+);
+let lastTouchEndTs = 0;
+document.addEventListener(
+  "touchend",
+  (e) => {
+    const now = Date.now();
+    if (now - lastTouchEndTs <= 300) {
+      e.preventDefault();
+    }
+    lastTouchEndTs = now;
+  },
+  false
+);

@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>デパートの迷子 ― ある日曜日のおはなし [v2]</title>
 
 <!-- ゲーム向けフォント -->
@@ -33,9 +33,11 @@
     <!-- キャラSVG -->
     <svg id="portrait" viewBox="0 0 180 220" xmlns="http://www.w3.org/2000/svg"></svg>
 
-    <div id="speaker"></div>
     <div id="choices" aria-label="選択肢"></div>
-    <div id="textbox"></div>
+    <div id="dialog-dock" aria-label="会話表示">
+      <div id="speaker"></div>
+      <div id="textbox"></div>
+    </div>
     <div id="flash"></div>
 
     <!-- INTRO -->
