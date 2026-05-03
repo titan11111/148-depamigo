@@ -1,0 +1,144 @@
+{
+  "meta": {
+    "title": "迷子デパート — 6エンド分岐チェック用仕様",
+    "minStoryChoicesPerEnding": 9,
+    "kanjiQuizChoicesCountTowardMin": false,
+    "notes": [
+      "各ストーリーシーンは常に三択（合流あり）。s2_branch でいきなり六択にしない。",
+      "最短経路は s1→s2_branch→s2_hot|s2_cool→各ルート頭→… でストーリー選択9回（ルート内6回＋共通3回）。s2_split経由は＋1回。",
+      "漢字おじさんの選択は min には含めない。",
+      "エンド D は母との再会シーンなしで迷子カウンター到達で終了。"
+    ]
+  },
+  "sharedPrefix": {
+    "storyChoicesFromStart": [
+      {
+        "step": 1,
+        "sceneId": "s1_entrance",
+        "presentation": "エントランスで迷子確定の気配。マネキン・館内放送。"
+      },
+      {
+        "step": 2,
+        "sceneId": "s2_branch",
+        "presentation": "エレベーターホール。気持ちの向きを三択で決める。"
+      },
+      {
+        "step": 3,
+        "sceneId": "s2_hot | s2_cool | s2_split | (s2_staff)",
+        "presentation": "二段目：動き系／静けさ系／迷い→合流 or s2_staff で六ルートへ。"
+      }
+    ]
+  },
+  "endings": [
+    {
+      "id": "end_roof_clown",
+      "tier": "BAD",
+      "title": "BAD END ― 屋上のピエロ",
+      "tone": "ホラー",
+      "terminalSceneId": "a6",
+      "storyChoiceSteps": [4, 5, 6, 7, 8, 9],
+      "sceneChain": [
+        { "id": "s2_hot", "presentation": "動きルートで屋上噂を選ぶ（s2_splitから合流入りも可）。", "beats": "三択の二段目。" },
+        { "id": "a1", "presentation": "屋上イベントの噂、足が向く。", "beats": "案内の隅で「屋上だけ別番組」の張り紙。" },
+        { "id": "a2", "presentation": "非常口から屋上へ向かう足取り。", "beats": "灯りが減る階段。" },
+        { "id": "a3", "presentation": "屋上遊具の影が長い。", "beats": "風音だけが大きい。" },
+        { "id": "a4", "presentation": "カラーのピエロが動かない。", "beats": "ホラー：視線だけが追う。" },
+        { "id": "a5", "presentation": "逃げ道と近づく選択。", "beats": "サクラチップのような笑いの気配。" },
+        { "id": "a6", "presentation": "戦い／捕獲の決定的瞬間。", "beats": "フラッシュ・低音推奨。BAD確定。" }
+      ]
+    },
+    {
+      "id": "end_wrong_mother",
+      "tier": "BAD",
+      "title": "BAD END ― にせものの後ろ姿",
+      "tone": "いざこざ／孤独",
+      "terminalSceneId": "b6",
+      "storyChoiceSteps": [4, 5, 6, 7, 8, 9],
+      "sceneChain": [
+        { "id": "s2_hot", "presentation": "動きルートで赤い服を追う。", "beats": "三択の二段目。" },
+        { "id": "b1", "presentation": "赤いカーディガンの背中を見つける。", "beats": "母と似たシルエット。" },
+        { "id": "b2", "presentation": "人ごみを縫って追う。", "beats": "呼びかけられない焦り。" },
+        { "id": "b3", "presentation": "別フロアへエスカレーター。", "beats": "すれちがいざわめき。" },
+        { "id": "b4", "presentation": "角で見失いそうになる。", "beats": "ハラハラ追跡。" },
+        { "id": "b5", "presentation": "タッチの直前。", "beats": "振り向いた顔が母ではない。" },
+        { "id": "b6", "presentation": "別人について迷子深化。", "beats": "BAD確定。" }
+      ]
+    },
+    {
+      "id": "end_food_heaven",
+      "tier": "BAD",
+      "title": "BAD END ― よだれの迷路",
+      "tone": "コミック→どん詰まり",
+      "terminalSceneId": "c6",
+      "storyChoiceSteps": [4, 5, 6, 7, 8, 9],
+      "sceneChain": [
+        { "id": "s2_hot", "presentation": "動きルートでレストラン街へ。", "beats": "三択の二段目。" },
+        { "id": "c1", "presentation": "B1のスープの香り。", "beats": "空腹が先に立つ。" },
+        { "id": "c2", "presentation": "試食コーナーの輪。", "beats": "一口だけが増える。" },
+        { "id": "c3", "presentation": "レストラン街のネオン。", "beats": "料理がうますぎる描写。" },
+        { "id": "c4", "presentation": "おかわりレーン。", "beats": "理由を忘れかける独白。" },
+        { "id": "c5", "presentation": "店員の声が遠い。", "beats": "時間感覚がにぶい。" },
+        { "id": "c6", "presentation": "探す目的を完全に失う。", "beats": "BAD確定。" }
+      ]
+    },
+    {
+      "id": "end_lost_desk",
+      "tier": "GOOD",
+      "title": "ハッピーエンド ― 迷子カウンター",
+      "tone": "安堵（母とはこのシナリオでは再会しない）",
+      "terminalSceneId": "d6",
+      "storyChoiceSteps": [4, 5, 6, 7, 8, 9],
+      "sceneChain": [
+        { "id": "s2_cool|s2_staff", "presentation": "静けさ／窓口系で迷子カウンターを選ぶ。", "beats": "s2_cool 直達 or s2_split→s2_staff どちらでも可。" },
+        { "id": "d1", "presentation": "案内の矢印を頼りに迷子窓口へ。", "beats": "冷静ルート。" },
+        { "id": "d2", "presentation": "フロアマップのピンクマーク。", "beats": "緑の灯りの通路。" },
+        { "id": "d3", "presentation": "列の少ない番号札。", "beats": "順番待ちの安心感。" },
+        { "id": "d4", "presentation": "名前と待ち合わせ場所を伝える。", "beats": "ペン先がゆれる。" },
+        { "id": "d5", "presentation": "制服の人がうなずく。", "beats": "館内放送が自分のために動く予感。" },
+        { "id": "d6", "presentation": "カウンター内の待合へ。", "beats": "ここでエンド。外出しまで書かず余白。" }
+      ]
+    },
+    {
+      "id": "end_deduction",
+      "tier": "GOOD",
+      "title": "TRUE END ― 証跡のむこう",
+      "tone": "推理・再会",
+      "terminalSceneId": "e6",
+      "storyChoiceSteps": [4, 5, 6, 7, 8, 9],
+      "sceneChain": [
+        { "id": "s2_cool|s2_staff", "presentation": "推理を選ぶ。", "beats": "同上どちらの経路でも可。" },
+        { "id": "e1", "presentation": "頭の中で手がかりを並べる。", "beats": "ノートに書く想像。" },
+        { "id": "e2", "presentation": "文具売場付近の通路で警備員の証言。※踊り場ではなく文具エリアの通路。", "beats": "テロップも文具寄り。写真なしなら背景省略可（実装はcanvas/bgのまま）。" },
+        { "id": "e3", "presentation": "紙袋のロゴを思い出す。", "beats": "観察フラグ相当。" },
+        { "id": "e4", "presentation": "館内放送のフレーズ。", "beats": "総合案内の呼び出し。" },
+        { "id": "e5", "presentation": "線がつながる足取り。", "beats": "1Fハンカチ売り場へ。" },
+        { "id": "e6", "presentation": "母の袖を掴む。", "beats": "TRUE確定。" }
+      ]
+    },
+    {
+      "id": "end_bookstore",
+      "tier": "GOOD",
+      "title": "ハッピーエンド ― 棚のあいだ",
+      "tone": "偶然の再会",
+      "terminalSceneId": "f6",
+      "storyChoiceSteps": [4, 5, 6, 7, 8, 9],
+      "sceneChain": [
+        { "id": "s2_cool|s2_staff", "presentation": "本屋で待つ。", "beats": "同上どちらの経路でも可。" },
+        { "id": "f1", "presentation": "5F 書籍へ直行。", "beats": "静けさ。" },
+        { "id": "f2", "presentation": "立ち読みで時間を潰す。", "beats": "紙の匂い。" },
+        { "id": "f3", "presentation": "絵本の一ページ。", "beats": "幼い記憶とリンク。" },
+        { "id": "f4", "presentation": "隣の棚の気配。", "beats": "カーディガンの赤。" },
+        { "id": "f5", "presentation": "書架の隙間から覗く。", "beats": "息をのむ。" },
+        { "id": "f6", "presentation": "同じ背表紙に手が伸びる。", "beats": "偶然の再会。" }
+      ]
+    }
+  ],
+  "verificationChecklist": [
+    "画面上に一度も六択が出ない（すべて各シーン三択）",
+    "各ルート最短: s1 + s2_branch + (s2_hot|s2_cool または s2_split→合流) + a1〜|… の専用6シーン = ストーリー選択9回以上",
+    "漢字イベントが挟まっても min 判定には含めない",
+    "end_lost_desk は迷子カウンター案内・手続きのみで終わり、母との対面・抱擁まで描写していないか",
+    "e2 は『踊り場』ではなく文具売場付近の通路表現になっているか",
+    "aルートの演出ノートにホラー（視線・無音・フラッシュ）が載っているか"
+  ]
+}

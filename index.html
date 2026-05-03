@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>デパートの迷子 ― ある日曜日のおはなし [v2]</title>
+
+<!-- ゲーム向けフォント -->
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Press+Start+2P&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div id="crt">
+  <div id="screen">
+    <canvas id="bgCanvas" width="800" height="600"></canvas>
+    <div id="bg" class="bg-title"></div>
+    <div id="bg-deco"></div>
+
+    <div id="hud" style="display:none;">
+      <div id="hud-row-stats">
+        <div class="hud-box" id="hud-courage">勇気 ★ 0</div>
+        <div class="hud-box" id="hud-observe">観察 ◆ 0</div>
+        <div class="hud-box warn" id="hud-anxiety">不安 ▼ 0</div>
+      </div>
+      <div id="quest-line" aria-live="polite"></div>
+    </div>
+    <div id="floor-telop"></div>
+    <div id="stat-toast" aria-live="polite"></div>
+
+    <!-- キャラSVG -->
+    <svg id="portrait" viewBox="0 0 180 220" xmlns="http://www.w3.org/2000/svg"></svg>
+
+    <div id="speaker"></div>
+    <div id="choices" aria-label="選択肢"></div>
+    <div id="textbox"></div>
+    <div id="flash"></div>
+
+    <!-- INTRO -->
+    <div id="intro">
+      <div id="intro-text"></div>
+      <div id="intro-skip">[ Z / SPACE ] でスキップ</div>
+    </div>
+
+    <!-- タイトル -->
+    <div id="title" class="game-font">
+      <div id="title-frame"></div>
+      <div id="title-ending-count">エンディング開放数 <span class="title-ending-num">0</span>/<span class="title-ending-num">6</span></div>
+      <div id="title-logo">迷子デパート</div>
+      <div id="title-sub">― ある日曜日のおはなし ―</div>
+      <div id="title-menu">
+        <button id="title-btn-start" onclick="startIntro()">はじめから</button>
+        <button id="title-btn-continue" onclick="onContinueFromTitle()">つづきから</button>
+        <button id="title-btn-mother" onclick="startMotherRoute()" style="display:none">母さんのページ</button>
+      </div>
+      <div id="title-press">― PRESS  START ―</div>
+      <div id="title-version" aria-hidden="true"></div>
+      <p id="title-photo-note">写真・効果音は雰囲気を伝えるためのものです。</p>
+      <label id="title-a11y"><input type="checkbox" id="chk-reduced-motion"> 派手な画面動きを弱める</label>
+    </div>
+    <div id="branchMapModal">
+      <div id="branchMapPanel">
+        <div id="branchMapTitle">BRANCH VISUALIZATION</div>
+        <div id="branchMapText"></div>
+        <button id="branchMapClose" onclick="closeBranchMap()">とじる</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<script src="./script.js"></script>
+</body>
+</html>
